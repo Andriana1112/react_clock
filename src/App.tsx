@@ -72,7 +72,8 @@ export class App extends Component<{}, AppState> {
 
   private clickHandler: () => void;
 
-  private contextMenuHandler: (event: MouseEvent) => void;
+  // Using the global MouseEvent type for DOM event handlers
+  private contextMenuHandler: (event: globalThis.MouseEvent) => void;
 
   // State initialization as a class property
   state: AppState = {
@@ -87,7 +88,7 @@ export class App extends Component<{}, AppState> {
       this.setState({ hasClock: true });
     };
 
-    this.contextMenuHandler = (event: MouseEvent) => {
+    this.contextMenuHandler = (event: globalThis.MouseEvent) => {
       event.preventDefault(); // not to show the context menu
       this.setState({ hasClock: false });
     };
